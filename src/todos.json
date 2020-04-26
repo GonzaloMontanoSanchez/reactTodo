@@ -17,12 +17,6 @@
         "responsible":"Mark",
         "description":"relleno blabla",
         "prio":"high"
-    },
-    {
-        "title": "Task 4",
-        "responsible":"Mark",
-        "description":"relleno blabla",
-        "prio":"high"
     }
     ]
 }

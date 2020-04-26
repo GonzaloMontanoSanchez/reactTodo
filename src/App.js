@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
- 
+import TodoForm from './components/TodoForm'
 import {todos} from './todos.json'
 
 class App extends Component {
@@ -10,8 +10,15 @@ class App extends Component {
     super();
     this.state ={
      todos
-    }
+    };
+    this.handleAddTodo = this.handleAddTodo.bind(this);
   }
+  handleAddTodo(todo){
+    this.setState({
+      todos : [...this.state.todos, todo]
+    })
+  }
+
   render(){
     const todos =this.state.todos.map((todo,i)=>{
       return(
@@ -25,12 +32,13 @@ class App extends Component {
               {todo.prio}
             </spam>
           </div>
-          <div className='card-body'>
-            <p>{todo.description}</p> 
-            <p><mark>{todo.responsible}</mark></p> 
-
-
-          </div>
+            <div className='card-body'>
+              <p>{todo.description}</p> 
+              <p><mark>{todo.responsible}</mark></p> 
+            </div>
+            <div className='card-footer'>
+              <button></button>
+            </div>
           </div>
         </div>
       )
@@ -46,12 +54,21 @@ class App extends Component {
                     </span>
                 </a>
             </nav>
+            
+           
             <div className='container'>
               <div className='row mt-4'>
-                {todos}
+                <div className='col-md-3'>
+                  <img src={logo} className="App-logo" alt="logo" />
+                  <TodoForm onAddTodo = {this.handleAddTodo}/>
+                </div>
+                <div className='col-md-9'>
+                  <div className = 'row'>
+                    {todos}
+                  </div>
+                </div>
               </div>
             </div>
-        <img src={logo} className="App-logo" alt="logo" />
     </div>
   );
   }
